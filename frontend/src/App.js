@@ -1,6 +1,8 @@
 import {useState, useEffect, React} from 'react'
 import Container from '@material-ui/core/Container';
 
+import validator from 'validator'
+
 import AssignmentForm from "./components/AssignmentForm"
 import QueryForm from "./components/QueryForm"
 import SearchResults from "./components/SearchResults"
@@ -54,13 +56,18 @@ const App = () => {
         event.preventDefault();
 
         if (!(Name && Url && Username)) {
-            console.log("some fields are empty !");
+            alert("some fields are empty !");
+            return
+        }
+
+        if (!validator.isURL(Url)) {
+            alert("not a valid url !")
             return
         }
 
         const newFile = {
             fileName: Name,
-            url: Url,
+            url: "//".concat(Url),
             user: Username
         }
 
