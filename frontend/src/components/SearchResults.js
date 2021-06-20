@@ -44,7 +44,7 @@ const SearchResults = ({results}) =>{
                             </Typography>
 
                             <Typography variant="h5" component="h2">
-                                {result.name}
+                                {result.fileName}
                             </Typography>
 
                             <Typography className={classes.title} color="textSecondary" gutterBottom>

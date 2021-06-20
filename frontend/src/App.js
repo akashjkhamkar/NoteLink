@@ -1,53 +1,27 @@
-import {useState, React} from 'react'
+import {useState, useEffect, React} from 'react'
 import Container from '@material-ui/core/Container';
 
 import AssignmentForm from "./components/AssignmentForm"
 import QueryForm from "./components/QueryForm"
 import SearchResults from "./components/SearchResults"
 
+import filesService from "./services/Documents"
+
 const App = () => {
-    // fake uploads for testing purposes
-    const fakeUploads = [
-        {
-            name: "aaaa",
-            url: "yes..",
-            user: "amey",
-            id: "odhzsfdjashdifu"
-        },
-        {
-            name: "harry potter and fucking amazon",
-            url: "amazonfuckyouinparticularbutplsdelivermyshit.com",
-            user: "pratik",
-            id: "sodsdfssadfsadfdfhzsfdjashdifu"
-        },
-        {
-            name: "pbl shit",
-            url: "yes..",
-            user: "gopi",
-            id: "odhzsfdjasdfaashdifu"
-        },
-        {
-            name: "zzzzz",
-            url: "amazonfuckyouinparticularbutplsdelivermyshit.com",
-            user: "gajanan",
-            id: "sodsdfsdasdfsdsddasfsdfhzsfdjashdifu"
-        },
-        {
-            name: "aaaa",
-            url: "yes..",
-            user: "chetan",
-            id: "odhzsfdjasdsdsdshdifu"
-        }
-    ]
-
-
     // state variables
     const [Name, setName] = useState("")
     const [Url, setUrl] = useState("")
     const [Query, setQuery] = useState("")
     const [Username, setUsername] = useState("")
-    const [Uploads, setUploads] = useState(fakeUploads)
+    const [Uploads, setUploads] = useState([])
     const [QueryResults, setResults] = useState([])
+
+    useEffect(() => {
+        filesService.getAll()
+        .then(res => {
+            console.log('fetched !');
+            setUploads(res)})
+    }, [])
 
     // handlers
     const nameHandler = (event) => {
@@ -68,7 +42,7 @@ const App = () => {
 
         if (query) {
             setResults(Uploads.filter(result => 
-                result.name.toLowerCase().includes(query.toLowerCase())
+                result.fileName.toLowerCase().includes(query.toLowerCase())
             ));
         }else{
             setResults([]);
@@ -78,7 +52,23 @@ const App = () => {
     const addHandler = (event) => {
         // validate and send to server
         event.preventDefault();
-        console.log(Name, Url, Username)
+
+        if (!(Name && Url && Username)) {
+            console.log("some fields are empty !");
+            return
+        }
+
+        const newFile = {
+            fileName: Name,
+            url: Url,
+            user: Username
+        }
+
+        console.log(newFile);
+        filesService.add(newFile).then(result => 
+            setUploads(Uploads.concat(result))
+        ).catch(err => 
+            console.log(err))
     }
 
     return (
