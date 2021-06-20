@@ -1,0 +1,18 @@
+POST http://localhost:3001/api/files/
+content-type: application/json
+
+{
+    "fileName" : "Magic Tricks",
+    "url" : "www.evernote/magictricks.com",
+    "user" : "Micheal Scott"
+}
+
+################
+
+GET http://localhost:3001/api/files/
+content-type: application/json
+
+
+########
+GET http://localhost:3001/api/files/60cf3031253f343ca441b1e7
+content-type: application/json
