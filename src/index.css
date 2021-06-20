@@ -1,0 +1,22 @@
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+.hidden{
+  display: none;
+}
+
+.resultgrid{
+  overflow-y: hidden;
+  border-radius: 12px;
+  background: #202020;  
+  color: #6c00b4;
+  position: relative; 
+  top: 50px;
+}
+
+.mainContainer, #root{
+  background: #FFFFFF;  
+  height: 100%;
+}

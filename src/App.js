@@ -1,47 +1,9 @@
 import {useState, React} from 'react'
+import Container from '@material-ui/core/Container';
 
-const AssignmentForm = ({ Name, Url, nameHandler, urlHandler, addHandler }) => (
-    <div>
-        <form>
-            <h1>create a new assignment entry</h1>
-            <div>
-                name:
-                <input value={Name} onChange={nameHandler} />
-            </div>
-            <div>
-                Url:
-                <input value={Url} onChange={urlHandler} />
-            </div>
-            <div>
-                <button type="submit" onClick={addHandler}>add</button>
-            </div>
-        </form>
-    </div>
-);
-
-const QueryForm = ({Query, queryHandler}) => (
-    <div>
-        <form>
-            <h1>search for assignments</h1>
-            <div>
-                <input value={Query} onChange = {queryHandler}/>
-            </div>
-        </form>
-    </div>
-)
-
-const SearchResults = ({results}) => (
-    <div>
-        {results.map(result => (
-
-            <div key={result.id}>
-                <h3>{result.name}</h3>
-                {result.url}
-            </div>
-
-        ))}
-    </div>
-)
+import AssignmentForm from "./components/AssignmentForm"
+import QueryForm from "./components/QueryForm"
+import SearchResults from "./components/SearchResults"
 
 const App = () => {
     // fake uploads for testing purposes
@@ -49,22 +11,32 @@ const App = () => {
         {
             name: "aaaa",
             url: "yes..",
+            user: "amey",
             id: "odhzsfdjashdifu"
         },
         {
             name: "harry potter and fucking amazon",
             url: "amazonfuckyouinparticularbutplsdelivermyshit.com",
+            user: "pratik",
             id: "sodsdfssadfsadfdfhzsfdjashdifu"
         },
         {
             name: "pbl shit",
             url: "yes..",
+            user: "gopi",
             id: "odhzsfdjasdfaashdifu"
         },
         {
             name: "zzzzz",
             url: "amazonfuckyouinparticularbutplsdelivermyshit.com",
-            id: "sodsdfsdasdfdasfsdfhzsfdjashdifu"
+            user: "gajanan",
+            id: "sodsdfsdasdfsdsddasfsdfhzsfdjashdifu"
+        },
+        {
+            name: "aaaa",
+            url: "yes..",
+            user: "chetan",
+            id: "odhzsfdjasdsdsdshdifu"
         }
     ]
 
@@ -73,6 +45,7 @@ const App = () => {
     const [Name, setName] = useState("")
     const [Url, setUrl] = useState("")
     const [Query, setQuery] = useState("")
+    const [Username, setUsername] = useState("")
     const [Uploads, setUploads] = useState(fakeUploads)
     const [QueryResults, setResults] = useState([])
 
@@ -83,6 +56,10 @@ const App = () => {
 
     const urlHandler = (event) => {
         setUrl(event.target.value);
+    }
+
+    const usernameHandler = (event) => {
+        setUsername(event.target.value);
     }
 
     const queryHandler = (event) => {
@@ -101,28 +78,33 @@ const App = () => {
     const addHandler = (event) => {
         // validate and send to server
         event.preventDefault();
-        console.log(Name, Url)
+        console.log(Name, Url, Username)
     }
 
     return (
-        <div className="container">
-            <AssignmentForm 
-                Name = {Name} 
-                Url = {Url} 
-                nameHandler = {nameHandler} 
-                urlHandler = {urlHandler}
-                addHandler = {addHandler}
-            />
-    
-            <QueryForm
-                Query = {Query}
-                queryHandler = {queryHandler}
-            />
+        <Container className="mainContainer" component="main">
+            <Container maxWidth="xs">
+                <AssignmentForm
+                    Name = {Name} 
+                    Url = {Url} 
+                    Username = {Username}
+                    nameHandler = {nameHandler} 
+                    urlHandler = {urlHandler}
+                    addHandler = {addHandler}
+                    usernameHandler = {usernameHandler}
+                />
+        
+                <QueryForm
+                    Query = {Query}
+                    queryHandler = {queryHandler}
+                />
+            </Container>
 
             <SearchResults
                 results = {QueryResults}
             />
-        </div>
+
+        </Container>
     )
 }
 
