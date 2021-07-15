@@ -72,9 +72,12 @@ const App = () => {
         }
 
         console.log(newFile);
-        filesService.add(newFile).then(result => 
-            setUploads(Uploads.concat(result))
-        ).catch(err => 
+        filesService.add(newFile).then(result =>{ 
+            setUploads(Uploads.concat(result));
+            setName("");
+            setUrl("");
+            setUsername("");
+        }).catch(err => 
             console.log(err))
     }
 
@@ -87,8 +90,8 @@ const App = () => {
                     Username = {Username}
                     nameHandler = {nameHandler} 
                     urlHandler = {urlHandler}
-                    addHandler = {addHandler}
                     usernameHandler = {usernameHandler}
+                    addHandler = {addHandler}
                 />
         
                 <QueryForm
