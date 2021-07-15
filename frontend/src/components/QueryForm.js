@@ -20,8 +20,8 @@ const QueryForm = ({ Query, queryHandler}) => {
             or
         </Typography>
         
-        <Typography component="h1" variant="h5">
-            search for the document
+        <Typography style={{fontWeight:600}} component="h1" variant="h5">
+            Search for the document
         </Typography>
 
         <form>            

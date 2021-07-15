@@ -6,6 +6,7 @@ import validator from 'validator'
 import AssignmentForm from "./components/AssignmentForm"
 import QueryForm from "./components/QueryForm"
 import SearchResults from "./components/SearchResults"
+import Header from "./components/Header"
 
 import filesService from "./services/Documents"
 
@@ -70,20 +71,30 @@ const App = () => {
             url: "//".concat(Url),
             user: Username
         }
+        
+        const loadingGif = document.querySelector(".loading");
+        const doneGif = document.querySelector(".done");
+        loadingGif.style.display = "block";
 
-        console.log(newFile);
         filesService.add(newFile).then(result =>{ 
             setUploads(Uploads.concat(result));
             setName("");
             setUrl("");
             setUsername("");
-        }).catch(err => 
-            console.log(err))
+            loadingGif.style.display = "none";
+
+            doneGif.style.display = "block";
+            setTimeout(() => {doneGif.style.display = 'none'}, 4000);
+
+        }).catch(err => {
+            loadingGif.display = "none";
+            console.log(err)})
     }
 
     return (
         <Container className="mainContainer" component="main">
             <Container maxWidth="xs">
+                <Header/>
                 <AssignmentForm
                     Name = {Name} 
                     Url = {Url} 

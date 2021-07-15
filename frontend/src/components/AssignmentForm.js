@@ -17,7 +17,7 @@ const AssignmentForm = ({ Name, Url, Username, nameHandler, urlHandler, addHandl
     const classes = useStyles();
     return (
     <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
+        <Typography component="h4" variant="h4" style={{fontWeight:600}}>
             Create a new entry
         </Typography>
         <form>
@@ -67,6 +67,8 @@ const AssignmentForm = ({ Name, Url, Username, nameHandler, urlHandler, addHandl
                 startIcon={<SaveIcon />}>
                 save
             </Button>
+            <img className="loading" src={"https://i.pinimg.com/originals/2c/bb/5e/2cbb5e95b97aa2b496f6eaec84b9240d.gif"} alt="loading"/>
+            <img className="done" src={"https://i.pinimg.com/originals/37/78/db/3778dbeebfe43a60eca57c5aecfdcf0d.gif"} alt="loading"/>
     </div>
 )};
 

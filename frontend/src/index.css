@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 html, body{
   height: 100%;
   margin: 0;
+  color: rgb(55, 53, 47);
+}
+
+.header{
+  color: #8c2dff;
+  font-size: 100px;
+  font-family: 'Gamja Flower', cursive;;
+}
+
+.loading, .done{
+  display: none;
+  width: 300px;
 }
 
 .hidden{
@@ -17,6 +30,6 @@ html, body{
 }
 
 .mainContainer, #root{
-  background: #FFFFFF;  
+  background: transparent;  
   height: 100%;
 }
