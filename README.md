@@ -4,7 +4,7 @@
 ### Team :-
 A-59 | Akash J. Khamkar
 
-A-35 | Ganesh D. Futane
+A-35 | Ganesh D. Futane @gatsby003
 
 A-57 | Karan Kaul
 
@@ -16,7 +16,7 @@ A-03 | Adarsh Rai
 
 * access all the material , shared by other people
 
-* from video lectures to pdfs , anything can be added , as long as the url is the working.
+* from video lectures to pdfs , anything can be added , as long as the url is working.
 
 * ultimately making the student life easier 
 
