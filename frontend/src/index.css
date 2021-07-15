@@ -6,6 +6,10 @@ html, body{
 }
 
 .header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: #8c2dff;
   font-size: 100px;
   font-family: 'Gamja Flower', cursive;;

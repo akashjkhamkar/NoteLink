@@ -66,9 +66,17 @@ const App = () => {
             return
         }
 
+        let fileUrl = Url; 
+        
+        if(fileUrl.toLowerCase().startsWith("https://")){
+            fileUrl = fileUrl.replace("https://", ""); 
+        } else if(fileUrl.toLowerCase().startsWith("http://")){
+            fileUrl = fileUrl.replace("http://", ""); 
+        }
+
         const newFile = {
             fileName: Name,
-            url: "//".concat(Url),
+            url: "//".concat(fileUrl),
             user: Username
         }
         

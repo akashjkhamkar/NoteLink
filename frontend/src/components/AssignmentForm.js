@@ -33,7 +33,7 @@ const AssignmentForm = ({ Name, Url, Username, nameHandler, urlHandler, addHandl
                 label="Name of the document"
                 autoFocus />
         
-            <TextField 
+            <TextField
                 required 
                 size="small" 
                 fullWidth             

@@ -64,8 +64,8 @@ const SearchResults = ({results}) =>{
                                     color: "white"
                                 }}
                                 label="url" 
-                                variant="contained" 
-                                target="_blank" 
+                                variant="contained"
+                                target="_blank"
                                 href={result.url}>
                                     link
                             </Button>
