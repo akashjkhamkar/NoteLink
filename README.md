@@ -2,7 +2,7 @@
 ## A collaborative platform to catalouge all the study material.
 https://notelink-pbl.herokuapp.com/
 ### Team :-
-A-59 | Akash J. Khamkar
+A-59 | Akash J. Khamkar @akashjkhamkar
 
 A-35 | Ganesh D. Futane @gatsby003
 
